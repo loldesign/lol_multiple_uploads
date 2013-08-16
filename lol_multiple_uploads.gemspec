@@ -7,17 +7,16 @@ require "lol_multiple_uploads/version"
 Gem::Specification.new do |s|
   s.name        = "lol_multiple_uploads"
   s.version     = LolMultipleUploads::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of LolMultipleUploads."
-  s.description = "TODO: Description of LolMultipleUploads."
+  s.authors     = ["Eduardo Zaghi"]
+  s.email       = ["eduardo@loldesign.com.br"]
+  s.homepage    = "http://www.loldesign.com.br"
+  s.summary     = "Multiple file uploads using mongoid, carrierwave and filepicker"
+  s.description = "You must create one account at https://www.inkfilepicker.com/ for use this gem"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails"                   , "~> 3.2.13"
+  s.add_dependency "rails"                   , "~> 3.2"
   s.add_dependency "jquery-rails"
   s.add_dependency 'carrierwave-mongoid'     , "~> 0.6.1"
   s.add_dependency 'mongoid'                 , '>= 3.1.2'
-  s.add_dependency "jquery-fileupload-rails"
 end
