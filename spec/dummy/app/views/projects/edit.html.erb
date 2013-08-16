@@ -1,0 +1,8 @@
+  <%= link_to "Adicionar Imagens", 'javascript://', class: 'multiple_upload', 'data-model' => @project.class, 'data-model-id' => @project.id, 'data-store-path' => upload_image_path(format: 'json'), 'data-file-picker-key' => 'AW4LKXceQXaH71hWtVTdlz', 'data-image-container' => '.images-container' %>
+
+  <h2>Fotos</h2>
+  <div class='images-container'>
+  	<%@project.photos.each do |photo|%>
+  		<%= image_tag(photo.image.url, 'data-id' => photo.id)%>
+  	<% end -%>
+  </div>
