@@ -13,8 +13,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-IFRS.sublime-project
-IFRS.sublime-workspace
 # various artifacts
 **.war
 *.rbc
@@ -69,3 +67,4 @@ log/development.log
 spec/dummy/log/development.log
 
 spec/dummy/log/development.log
+spec/dummy/public/uploads/*
