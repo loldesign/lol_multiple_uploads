@@ -40,14 +40,16 @@ var MultipleUpload = function(link){
 			  type: 'POST',
 			  dataType: 'json',
 			  data: {model: that.model, model_id: that.model_id, photo: val.url},
+			  beforeSend: function(xhr){
+			  	that.showLoading();
+			  },
 			  complete: function(xhr, textStatus) {
+			  	that.hideLoading();
 			  },
 			  success: function(data, textStatus, xhr) {
-			    console.log('ok :)');
 			    that.appendImage(data);
 			  },
 			  error: function(xhr, textStatus, errorThrown) {
-			    console.log('bad :(');
 			  }
 			});
 			
@@ -55,7 +57,19 @@ var MultipleUpload = function(link){
 	},
 
 	this.appendImage = function(obj){
-		$(this.imageContainer).append("<img src='"+obj.image.url+"'>");
+		$(this.imageContainer).append("<img src='"+obj.image.url+"' data-id="+obj._id+">");
+	},
+
+	this.showLoading = function(){
+		jQuery('<img/>', {
+			src:   '/assets/lol_multiple_uploads/loading.gif',
+			style: 'position: fixed; bottom: 5px; right: 5px; z-index: 400;',
+			class: 'lol-multiple-uploads'
+		}).appendTo('body');
+	},
+
+	this.hideLoading = function(){
+		$('.lol-multiple-uploads:first').remove();
 	}
 
 	this.startup(); 
