@@ -1,4 +1,4 @@
 class Project
 	include Mongoid::Document
-	include Mongoid::LolMultipleImages
+  include Mongoid::LolMultipleImages
 end

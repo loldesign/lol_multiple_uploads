@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery.ui.sortable
+//= require lol_sortable/sortable
 //= require lol_multiple_uploads/upload
+//= require_tree .

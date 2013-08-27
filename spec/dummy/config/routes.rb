@@ -1,4 +1,6 @@
 Dummy::Application.routes.draw do
+  mount LolSortable::Engine => '/'
+
   resource :projects
 
   mount LolMultipleUploads::Engine => "/"

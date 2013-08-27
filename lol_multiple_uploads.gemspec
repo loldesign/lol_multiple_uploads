@@ -19,4 +19,5 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-rails"
   s.add_dependency 'carrierwave-mongoid'     , "~> 0.6.1"
   s.add_dependency 'mongoid'                 , '>= 3.1.2'
+  s.add_dependency 'lol_sortable'            , '~> 0.0.1'
 end

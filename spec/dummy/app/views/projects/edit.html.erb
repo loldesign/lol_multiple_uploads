@@ -1,8 +1,8 @@
 <%= upload_link('Adicionar Imagem', @project, '.images-container')%>
 
   <h2>Fotos</h2>
-  <div class='images-container'>
-  	<%@project.photos.each do |photo|%>
-  		<%= image_tag(photo.image.url, 'data-id' => photo.id)%>
+  <div class='images-container is-sortable' data-resource='photo' style="width: 100%;">
+  	<%@project.photos.prioritized.each do |photo|%>
+        <%= image_tag(photo.image.url, 'data-id' => photo.id, style: 'max-width: 100px; height: 100px;')%>
   	<% end -%>
   </div>
