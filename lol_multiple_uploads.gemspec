@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "Multiple file uploads using mongoid, carrierwave and filepicker"
   s.description = "You must create one account at https://www.inkfilepicker.com/ for use this gem"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile"]
 
   s.add_dependency "rails"                   , "~> 3.2"
   s.add_dependency "jquery-rails"
