@@ -3,9 +3,8 @@ class PhotosController < ActionController::Base
 
 	def create
     @resource = params[:model].classify.constantize.find params[:model_id]
-    @photo    = @resource.photos.build
-    @photo.image.store!(open(params[:photo]))
-    
+    @photo    = @resource.photos.build(remote_image_url: params[:photo])
+
     respond_with(@photo) do |format|
       if @photo.save
         format.json{ render json: @photo}
