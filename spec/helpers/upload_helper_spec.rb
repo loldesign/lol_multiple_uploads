@@ -29,8 +29,3 @@ describe UploadHelper do
 		it { should be_nil}
 	end
 end
-
-class Project
-	include Mongoid::Document
-	include Mongoid::LolMultipleImages
-end

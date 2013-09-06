@@ -11,8 +11,3 @@ describe Mongoid::LolMultipleImages do
 	end
 
 end
-
-class Project
-	include Mongoid::Document
-	include Mongoid::LolMultipleImages
-end
