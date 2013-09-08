@@ -1,0 +1,4 @@
+<figure data-id="<%= photo.id %>">
+  <%= image_tag(photo.image.url)%>
+  <%= link_to "Remover", remove_image_path(photo, format: 'json'), method: :delete %>
+</figure>

@@ -1,0 +1,51 @@
+.lol-multiple-uploads.images-container{
+  width: 100%;
+  float: left;
+  overflow: hidden;
+}
+
+.lol-multiple-uploads.images-container figure{
+  width: 120px;
+  height: 120px;
+  float: left;
+  padding: 0px;
+  margin: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lol-multiple-uploads.is-sortable figure{
+  cursor: move;
+}
+
+.lol-multiple-uploads.images-container figure a{
+  position: absolute;
+  bottom: -26px;
+  left: 0px;
+  width: 100%;
+  padding: 5px 0;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-transition: all 200ms ease-in-out;
+     -moz-transition: all 200ms ease-in-out;
+      -ms-transition: all 200ms ease-in-out;
+       -o-transition: all 200ms ease-in-out;
+          transition: all 200ms ease-in-out;
+}
+
+.lol-multiple-uploads.images-container figure:hover a{
+  bottom: 0px;
+  -webkit-transition: all 200ms ease-in-out;
+     -moz-transition: all 200ms ease-in-out;
+      -ms-transition: all 200ms ease-in-out;
+       -o-transition: all 200ms ease-in-out;
+          transition: all 200ms ease-in-out;
+}
+
+.lol-multiple-uploads.images-container img{
+  max-width: 100%;
+}
