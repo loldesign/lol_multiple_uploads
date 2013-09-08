@@ -28,4 +28,13 @@ describe PhotosController do
 			it {response.status.should eq(500)}
 		end
 	end
+
+	describe '#delete' do
+		let(:project){ Project.create(photos: [Photo.create(remote_image_url: 'http://s2.glbimg.com/5yP_9SWLo8VmSnoieH6tXTvGrBE=/300x397/s.glbimg.com/es/ge/f/original/2013/09/06/thiago_silva.jpg')]) }
+
+		before{ delete :destroy, id: project.photos.first.id, format: 'json' }
+
+		it {response.status.should eq(200)}
+		it {Photo.where(id: project.photos.first.id).should be_empty}
+	end
 end

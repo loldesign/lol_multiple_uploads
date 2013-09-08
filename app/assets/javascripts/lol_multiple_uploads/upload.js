@@ -5,8 +5,45 @@ $(document).ready(function() {
 	if($multipleUploadLink[0]){
 		new MultipleUpload($multipleUploadLink);
 	}
+
+  new MultipleUploadsPhotos();
 });
 
+var MultipleUploadsPhotos = function(){
+  var _this       = this;
+  this.$container = $('.lol-multiple-uploads.images-container'); 
+
+  this.startup = function(){
+    this.$container.on('click', 'figure a', function(event) {
+      _this.removeImage($(this));
+      return false;
+    });
+  },
+
+  this.removeImage = function($link){
+    if(window.confirm("Você tem certeza?")){
+      $.ajax({
+        url: $link.attr('href'),
+        type: 'DELETE',
+        dataType: 'json'
+      })
+      .done(function() {
+        console.log("success");
+        $link.parent().fadeOut('400', function() {
+          $(this).remove();
+        });
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+    }
+  },
+
+  this.startup();
+}
 
 var MultipleUpload = function(link){
 	var that   					= this;
@@ -26,7 +63,7 @@ var MultipleUpload = function(link){
 	},
 
 	this.filePicker = function(){
-		filepicker.setKey(that.filePickerKey); // -> 'AW4LKXceQXaH71hWtVTdlz'
+		filepicker.setKey(that.filePickerKey);
 
 		filepicker.pickMultiple(function(json){
    		that.storeImages(json);
@@ -57,20 +94,26 @@ var MultipleUpload = function(link){
 	},
 
 	this.appendImage = function(obj){
-		$(this.imageContainer).append("<img src='"+obj.image.url+"' data-id="+obj._id+">");
+    var html =  "<figure data-id="+obj._id+">"
+        html += "<img src='"+obj.image.url+"' >"
+        html += "<a rel=nofollow' data-method='delete' href='/remove-image/"+obj._id+".json'>Remover</a>"
+        html += "</figure>"
+
+		$(this.imageContainer).append(html);
 	},
 
 	this.showLoading = function(){
 		jQuery('<img/>', {
 			src:   '/assets/lol_multiple_uploads/loading.gif',
 			style: 'position: fixed; bottom: 5px; right: 5px; z-index: 400;',
-			class: 'lol-multiple-uploads'
+			class: 'lol-multiple-uploads loading'
 		}).appendTo('body');
 	},
 
 	this.hideLoading = function(){
-		$('.lol-multiple-uploads:first').remove();
+		$('.lol-multiple-uploads.loading:first').remove();
 	}
 
 	this.startup(); 
 }
+
