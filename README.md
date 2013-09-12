@@ -8,7 +8,7 @@ You must create one account on [inkfilepicker](https://www.inkfilepicker.com/) a
 
 * Add to Gemfile
 
-`gem 'lol_multiple_uploads', git: 'git@github.com:loldesign/lol_multiple_uploads.git'`
+`gem 'lol_multiple_uploads', '1.0.2'`
 
 * Run the Generator
 
@@ -25,9 +25,9 @@ You must create one account on [inkfilepicker](https://www.inkfilepicker.com/) a
 * in your form or view add:
 
 ```
-<%= upload_link('Link Text', object, '.images-container')%>
+<%= upload_link('Link Text', object)%>
 
-<div class 'images-container'></div>
+<%= list_photos(object) %>
 ```
 
 * __ps:__ the *.images_container* is a place where the js will append the images uploaded
