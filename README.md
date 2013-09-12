@@ -25,7 +25,7 @@ You must create one account on [inkfilepicker](https://www.inkfilepicker.com/) a
 * in your form or view add:
 
 ```
-<%= upload_link('Link Text', object)%>
+<%= upload_link('Link Text', object, '.images_container')%>
 
 <%= list_photos(object) %>
 ```
