@@ -1,7 +1,7 @@
 .lol-multiple-uploads.images-container{
   width: 100%;
-  float: left;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .lol-multiple-uploads.images-container figure{
