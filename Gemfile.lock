@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lol_multiple_uploads (1.0.1)
+    lol_multiple_uploads (1.0.2)
       carrierwave-mongoid (~> 0.6.1)
       jquery-rails
       lol_sortable (~> 0.0.1)
