@@ -8,7 +8,7 @@ You must create one account on [inkfilepicker](https://www.inkfilepicker.com/) a
 
 * Add to Gemfile
 
-`gem 'lol_multiple_uploads', '1.0.2'`
+`gem 'lol_multiple_uploads', '1.1.0'`
 
 * Run the Generator
 
@@ -33,5 +33,20 @@ You must create one account on [inkfilepicker](https://www.inkfilepicker.com/) a
 * __ps:__ the *.images_container* is a place where the js will append the images uploaded
 
 
-* enjoy it :)
+## Add Captions to Images ##
+---------------------------------------
+* add in your model:
 
+`multiple_uploads caption: true`
+
+* example:
+```
+  class Project
+    include Mongoid::Document
+    include Mongoid::LolMultipleImages
+
+    multiple_uploads caption: true
+  end
+``` 
+
+## That's it :) ##
