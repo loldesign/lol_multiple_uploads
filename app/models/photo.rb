@@ -8,4 +8,12 @@ class Photo
 	belongs_to :photable, polymorphic: true
 
 	validates :photable, presence: true
+
+  field :caption
+
+  validates :caption, presence: true, if: :has_caption?, on: :update
+
+  def has_caption?
+    self.photable.present? && self.photable.caption_status
+  end
 end

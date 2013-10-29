@@ -6,18 +6,23 @@ $(document).ready(function() {
 		new MultipleUpload($multipleUploadLink);
 	}
 
-  new MultipleUploadsPhotos();
+  new imageContainerManager();
 });
 
-var MultipleUploadsPhotos = function(){
+var imageContainerManager = function(){
   var _this       = this;
   this.$container = $('.lol-multiple-uploads.images-container'); 
+  this.hasCaption = Boolean(this.$container.data('has-caption'));
 
   this.startup = function(){
     this.$container.on('click', 'figure a', function(event) {
       _this.removeImage($(this));
       return false;
     });
+
+    if (this.hasCaption){
+      new imageCaptionManager(this.$container);
+    };
   },
 
   this.removeImage = function($link){
@@ -45,14 +50,48 @@ var MultipleUploadsPhotos = function(){
   this.startup();
 }
 
+var imageCaptionManager = function($container){
+  var _this        = this;
+  _this.$container = $container;
+
+  this.startup = function(){
+    this.$container.on('focusout', 'figure input:text', function(event) {
+      event.preventDefault();
+      var field = $(this); 
+      _this.updateImageCaption(field.val(), field.closest('figure').data('id'));
+    });
+  },
+
+  this.updateImageCaption = function(text, image_id){
+    $.ajax({
+      url: '/update-image/'+image_id,
+      type: 'PUT',
+      dataType: 'json',
+      data: {photo: {caption: text}},
+    })
+    .done(function() {
+      console.log("success");
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+    
+  }
+
+  this.startup();
+}
+
 var MultipleUpload = function(link){
 	var that   					= this;
 	this.link  					= link; 
-	this.model 					= this.link.attr('data-model'); 
-	this.model_id    		= this.link.attr('data-model-id');
-	this.storeImagePath = this.link.attr('data-store-path');
-	this.filePickerKey  = this.link.attr('data-file-picker-key');
-	this.imageContainer = this.link.attr('data-image-container');
+	this.model 					= this.link.data('model'); 
+	this.model_id    		= this.link.data('model-id');
+	this.storeImagePath = this.link.data('store-path');
+	this.filePickerKey  = this.link.data('file-picker-key');
+	this.imageContainer = this.link.data('image-container');
 
 	this.startup = function(){
 		this.link.on('click', function(event) {
@@ -75,7 +114,7 @@ var MultipleUpload = function(link){
 			$.ajax({
 			  url: that.storeImagePath,
 			  type: 'POST',
-			  dataType: 'json',
+			  dataType: 'html',
 			  data: {model: that.model, model_id: that.model_id, photo: val.url},
 			  beforeSend: function(xhr){
 			  	that.showLoading();
@@ -93,12 +132,7 @@ var MultipleUpload = function(link){
 		});
 	},
 
-	this.appendImage = function(obj){
-    var html =  "<figure data-id="+obj._id+">"
-        html += "<img src='"+obj.image.url+"' >"
-        html += "<a rel=nofollow' data-method='delete' href='/remove-image/"+obj._id+".json'>Remover</a>"
-        html += "</figure>"
-
+	this.appendImage = function(html){
 		$(this.imageContainer).append(html);
 	},
 

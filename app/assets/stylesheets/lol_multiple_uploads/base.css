@@ -6,7 +6,7 @@
 
 .lol-multiple-uploads.images-container figure{
   width: 120px;
-  height: 120px;
+  min-height: 120px;
   float: left;
   padding: 0px;
   margin: 5px;
@@ -18,10 +18,15 @@
   cursor: move;
 }
 
+.lol-multiple-uploads.images-container figure img{
+  height: 120px;
+  width: 120px;
+}
+
 .lol-multiple-uploads.images-container figure a{
   position: absolute;
-  bottom: -36px;
-  left: 0px;
+  top: 94px;
+  left: -120px;
   width: 100%;
   padding: 5px 0;
   color: #fff;
@@ -38,7 +43,7 @@
 }
 
 .lol-multiple-uploads.images-container figure:hover a{
-  bottom: 0px;
+  left: 0px;
   -webkit-transition: all 200ms ease-in-out;
      -moz-transition: all 200ms ease-in-out;
       -ms-transition: all 200ms ease-in-out;
@@ -48,4 +53,9 @@
 
 .lol-multiple-uploads.images-container img{
   max-width: 100%;
+}
+
+.lol-multiple-uploads.images-container[data-has-caption="true"] figure input[type='text']{
+  border: 1px solid #cacaca;
+  width: 116px;
 }
