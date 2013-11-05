@@ -1,8 +1,8 @@
 # encoding: utf-8
 class ImageUploader < CarrierWave::Uploader::Base
+  include CarrierWave::RMagick
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -18,6 +18,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
     "/assets/fallback/no-image.jpg"
+  end
+
+  version :gallery_thumb do
+    process :resize_to_fill => [120, 120]
   end
 
   # Process files as they are uploaded:

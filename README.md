@@ -27,7 +27,8 @@ You must create one account on [inkfilepicker](https://www.inkfilepicker.com/) a
 ```
 <%= upload_link('Link Text', object, '.images_container')%>
 
-<%= list_photos(object) %>
+<%= list_photos(object) %> or <%= list_photos(object, :photo_version) %>
+#default version is :gallery_thumb
 ```
 
 * __ps:__ the *.images_container* is a place where the js will append the images uploaded
