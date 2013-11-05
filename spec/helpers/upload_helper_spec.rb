@@ -6,7 +6,7 @@ describe UploadHelper do
 	context 'when object is persisted' do
 		let(:project){ Project.create}
 
-		subject{ helper.upload_link('Upload Imagem', project, '.images', 'gallery_thumb') }
+		subject{ helper.upload_link('Upload Imagem', object: project, image_container: '.images', photo_version: 'gallery_thumb') }
 		
 		it{ should =~ />Upload Imagem</ }
 		it{ should =~ /data-image-container=".images"/ }
@@ -17,16 +17,16 @@ describe UploadHelper do
 	end
 
 	context 'when project is new_record' do
-		let(:project){ Project.new}
+		let(:project){ Project.new }
 
-		subject{ helper.upload_link('Upload Imagem', project, '.images') }
+		subject{ helper.upload_link('Upload Imagem', object: project, image_container: '.images') }
 
-		it { should be_nil}
+		it { should be_nil }
 	end
 
 	context 'when project is nil' do
-		subject{ helper.upload_link('Upload Imagem', nil, '.images') }
+		subject{ helper.upload_link('Upload Imagem', object: nil, image_container: '.images') }
 
-		it { should be_nil}
+		it { should be_nil }
 	end
 end
