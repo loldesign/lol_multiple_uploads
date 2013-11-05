@@ -25,7 +25,8 @@ You must create one account on [inkfilepicker](https://www.inkfilepicker.com/) a
 * in your form or view add:
 
 ```
-<%= upload_link('Link Text', object, '.images_container')%>
+<%= upload_link('Link Text', object, '.images_container', 'gallery_thumb')%>
+#last parameter is optional but it's a version to be render after upload
 
 <%= list_photos(object) %> or <%= list_photos(object, :photo_version) %>
 #default version is :gallery_thumb

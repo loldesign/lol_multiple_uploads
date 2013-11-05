@@ -4,11 +4,11 @@ class PhotosController < ActionController::Base
 	def create
     @resource = params[:model].classify.constantize.find params[:model_id]
     @photo    = @resource.photos.build(remote_image_url: params[:photo])
-
+     
     respond_with(@photo) do |format|
       if @photo.save
         format.json{ render json: @photo  }
-        format.js  { render partial: '/layouts/lol_multiple_uploads/photo', locals: { photo: @photo } }
+        format.js  { render partial: '/layouts/lol_multiple_uploads/photo', locals: { photo: @photo, photo_version: params[:photo_version] } }
       else
         format.json{ render nothing: true, status: :error }
       end

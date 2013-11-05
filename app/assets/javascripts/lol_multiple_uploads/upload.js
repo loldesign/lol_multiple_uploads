@@ -10,9 +10,9 @@ $(document).ready(function() {
 });
 
 var imageContainerManager = function(){
-  var _this       = this;
-  this.$container = $('.lol-multiple-uploads.images-container'); 
-  this.hasCaption = Boolean(this.$container.data('has-caption'));
+  var _this         = this;
+  this.$container   = $('.lol-multiple-uploads.images-container'); 
+  this.hasCaption   = Boolean(this.$container.data('has-caption'));
 
   this.startup = function(){
     this.$container.on('click', 'figure a', function(event) {
@@ -91,7 +91,8 @@ var MultipleUpload = function(link){
 	this.model_id    		= this.link.data('model-id');
 	this.storeImagePath = this.link.data('store-path');
 	this.filePickerKey  = this.link.data('file-picker-key');
-	this.imageContainer = this.link.data('image-container');
+  this.imageContainer = this.link.data('image-container');
+	this.photoVersion   = this.link.data('photo-version');
 
 	this.startup = function(){
 		this.link.on('click', function(event) {
@@ -115,7 +116,11 @@ var MultipleUpload = function(link){
 			  url: that.storeImagePath,
 			  type: 'POST',
 			  dataType: 'html',
-			  data: {model: that.model, model_id: that.model_id, photo: val.url},
+			  data: {model: that.model, 
+               model_id: that.model_id, 
+               photo: val.url,
+               photo_version: that.photoVersion
+              },
 			  beforeSend: function(xhr){
 			  	that.showLoading();
 			  },
