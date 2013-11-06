@@ -1,5 +1,6 @@
 <figure data-id="<%= photo.id %>">
   <%= image_tag(photo.image.send(photo_version).url)%>
-  <%= link_to "Remover", remove_image_path(photo, format: 'json'), method: :delete %>
+  <%= link_to "Remover", remove_image_path(photo, format: 'json'), method: :delete, class: :delete%>
+  <%= link_to image_tag('lol_multiple_uploads/maximize.png'), photo.image.url, class: 'maximize', target: :blank %>
   <%= render partial: '/layouts/lol_multiple_uploads/photo-caption', locals: {photo: photo} if photo.has_caption? %>
 </figure>

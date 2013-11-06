@@ -18,12 +18,12 @@
   cursor: move;
 }
 
-.lol-multiple-uploads.images-container figure img{
+.lol-multiple-uploads.images-container figure > img{
   height: 120px;
   width: 120px;
 }
 
-.lol-multiple-uploads.images-container figure a{
+.lol-multiple-uploads.images-container figure a.delete{
   position: absolute;
   top: 94px;
   left: -120px;
@@ -42,13 +42,24 @@
           transition: all 200ms ease-in-out;
 }
 
-.lol-multiple-uploads.images-container figure:hover a{
+.lol-multiple-uploads.images-container figure:hover a.delete{
   left: 0px;
   -webkit-transition: all 200ms ease-in-out;
      -moz-transition: all 200ms ease-in-out;
       -ms-transition: all 200ms ease-in-out;
        -o-transition: all 200ms ease-in-out;
           transition: all 200ms ease-in-out;
+}
+
+.lol-multiple-uploads.images-container figure a.maximize{
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  visibility: hidden;
+}
+
+.lol-multiple-uploads.images-container figure:hover a.maximize{
+  visibility: visible;
 }
 
 .lol-multiple-uploads.images-container img{

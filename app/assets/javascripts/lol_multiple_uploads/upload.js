@@ -15,7 +15,7 @@ var imageContainerManager = function(){
   this.hasCaption   = Boolean(this.$container.data('has-caption'));
 
   this.startup = function(){
-    this.$container.on('click', 'figure a', function(event) {
+    this.$container.on('click', 'figure a.delete', function(event) {
       _this.removeImage($(this));
       return false;
     });
