@@ -55,7 +55,7 @@ var imageCaptionManager = function($container){
   _this.$container = $container;
 
   this.startup = function(){
-    this.$container.on('focusout', 'figure input:text', function(event) {
+    this.$container.on('focusout', 'figure textarea', function(event) {
       event.preventDefault();
       var field = $(this); 
       _this.updateImageCaption(field.val(), field.closest('figure').data('id'));
