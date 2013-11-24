@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe Mongoid::LolMultipleImages do
 	
-	context 'when clas has the module' do
+	context 'when class has the module' do
 		subject{ Project }
 
     it{ should have_many :photos }
