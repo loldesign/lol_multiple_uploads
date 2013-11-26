@@ -68,3 +68,7 @@ spec/dummy/log/development.log
 
 spec/dummy/log/development.log
 spec/dummy/public/uploads/*
+
+.ruby-gemset
+
+.ruby-version
