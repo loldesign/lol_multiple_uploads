@@ -50,4 +50,22 @@ You must create one account on [inkfilepicker](https://www.inkfilepicker.com/) a
   end
 ``` 
 
+## Add Captions Localized to Images ##
+---------------------------------------
+* add in your model:
+
+`multiple_uploads caption_localized: true, available_locales: ['pt-BR', 'en']`
+
+* example:
+```
+  class Project
+    include Mongoid::Document
+    include Mongoid::LolMultipleImages
+
+    multiple_uploads caption_localized: true, available_locales: ['pt-BR', 'en']
+  end
+``` 
+
+* **ps:** the ***available_locales*** is optional, if you not set it will take I18n.available_locales
+
 ## That's it :) ##

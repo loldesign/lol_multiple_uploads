@@ -10,9 +10,10 @@ $(document).ready(function() {
 });
 
 var imageContainerManager = function(){
-  var _this         = this;
-  this.$container   = $('.lol-multiple-uploads.images-container'); 
-  this.hasCaption   = Boolean(this.$container.data('has-caption'));
+  var _this                 = this;
+  this.$container           = $('.lol-multiple-uploads.images-container'); 
+  this.hasCaption           = Boolean(this.$container.data('has-caption'));
+  this.hasCaptionLocalized  = Boolean(this.$container.data('has-caption-localized'));
 
   this.startup = function(){
     this.$container.on('click', 'figure a.delete', function(event) {
@@ -20,7 +21,7 @@ var imageContainerManager = function(){
       return false;
     });
 
-    if (this.hasCaption){
+    if (this.hasCaption || this.hasCaptionLocalized){
       new imageCaptionManager(this.$container);
     };
   },
@@ -57,28 +58,14 @@ var imageCaptionManager = function($container){
   this.startup = function(){
     this.$container.on('focusout', 'figure textarea', function(event) {
       event.preventDefault();
-      var field = $(this); 
-      _this.updateImageCaption(field.val(), field.closest('figure').data('id'));
+      var $field = $(this); 
+      var $form  = $field.closest('form');
+      _this.updateImageCaption($form);
     });
   },
 
-  this.updateImageCaption = function(text, image_id){
-    $.ajax({
-      url: '/update-image/'+image_id,
-      type: 'PUT',
-      dataType: 'json',
-      data: {photo: {caption: text}},
-    })
-    .done(function() {
-      console.log("success");
-    })
-    .fail(function() {
-      console.log("error");
-    })
-    .always(function() {
-      console.log("complete");
-    });
-    
+  this.updateImageCaption = function($form){
+    $form.ajaxSubmit(); 
   }
 
   this.startup();

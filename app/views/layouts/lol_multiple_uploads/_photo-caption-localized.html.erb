@@ -1,0 +1,7 @@
+<%= form_for photo, url: update_image_path(photo) do |f|%>
+  <% locales.each do |locale| %>
+    <%= f.fields_for "caption_localized_translations", OpenStruct.new(f.object.send('caption_localized_translations')) do |ff| %>
+      <%= ff.text_area locale, placeholder: locale, rows: 3 %>
+    <% end %>
+  <% end %>
+<% end %>

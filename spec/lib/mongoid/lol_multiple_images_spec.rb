@@ -19,4 +19,23 @@ describe Mongoid::LolMultipleImages do
       it{ ProjectWithCaption.caption_status.should be_true }
     end
   end
+
+  describe 'caption_localized' do
+    it{ ProjectWithLocalizedCaption.caption_localized_status.should be_true }
+
+    context 'when not set available_locales' do
+      it{ ProjectWithLocalizedCaption.available_locales.should eq([:en]) }
+    end
+
+    context 'when set available_locales' do
+      class ProjectCaptionsLocalizedLocale
+        include Mongoid::Document
+        include Mongoid::LolMultipleImages
+
+        multiple_uploads caption_localized: true, caption_localized: [:'pt-BR', :en]
+      end
+      
+      it{ ProjectCaptionsLocalizedLocale.available_locales.should eq([:en]) }
+    end
+  end
 end
