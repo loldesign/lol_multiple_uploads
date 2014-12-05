@@ -21,4 +21,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'mongoid'                 , '>= 3.1.2'
   s.add_dependency 'lol_sortable'            , '~> 0.0.1'
   s.add_dependency 'rmagick'                 , '~> 2.13.2'
+
+  s.add_development_dependency "sqlite3"
 end

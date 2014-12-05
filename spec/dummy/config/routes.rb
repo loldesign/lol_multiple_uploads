@@ -1,9 +1,9 @@
 Dummy::Application.routes.draw do
-  mount LolSortable::Engine => '/'
-
+  resource :profiles
   resource :projects
 
-  mount LolMultipleUploads::Engine => "/"
+  mount LolSortable::Engine => '/'
+  mount LolMultipleUploads::Engine => '/'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,24 +1,42 @@
-class Photo
-	include Mongoid::Document
-	include Mongoid::Timestamps
-  include Mongoid::LolSortable
+if LOL_MULTIPLE_UPLOADS_ORM == 'Mongoid'
+  class Photo
+  	include Mongoid::Document
+  	include Mongoid::Timestamps
+    include Mongoid::LolSortable
 
-	mount_uploader :image, ImageUploader
+    mount_uploader :image, ImageUploader
 
-	belongs_to :photable, polymorphic: true
+    belongs_to :photable, polymorphic: true
 
-	validates :photable, presence: true
+    validates :photable, presence: true
 
-  field :caption
-  field :caption_localized, localize: true
+    field :caption
+    field :caption_localized, localize: true
 
-  validates :caption, presence: true, if: :has_caption?, on: :update
+    validates :caption, presence: true, if: :has_caption?, on: :update
 
-  def has_caption?
-    self.photable.present? && self.photable.caption_status
+    def has_caption?
+      self.photable.present? && self.photable.caption_status
+    end
+
+    def has_caption_localized?
+      self.photable.present? && self.photable.caption_localized_status
+    end
   end
+elsif LOL_MULTIPLE_UPLOADS_ORM == 'ActiveRecord'
+  class Photo < ActiveRecord::Base
+    mount_uploader :image, ImageUploader
 
-  def has_caption_localized?
-    self.photable.present? && self.photable.caption_localized_status
+    belongs_to :photable, polymorphic: true
+
+    scope :prioritized, -> {order('priority ASC')}
+
+    def has_caption?
+      false
+    end
+
+    def has_caption_localized?
+      false
+    end
   end
 end
