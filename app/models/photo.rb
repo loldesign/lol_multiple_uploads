@@ -25,6 +25,8 @@ if LOL_MULTIPLE_UPLOADS_ORM == 'Mongoid'
   end
 elsif LOL_MULTIPLE_UPLOADS_ORM == 'ActiveRecord'
   class Photo < ActiveRecord::Base
+    include ActiveRecord::LolSortable
+    
     mount_uploader :image, ImageUploader
 
     belongs_to :photable, polymorphic: true

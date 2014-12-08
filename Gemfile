@@ -8,7 +8,6 @@ gemspec
 gem "jquery-rails"
 gem 'mongoid'
 gem 'carrierwave-mongoid' , "~> 0.6.1"
-gem 'lol_sortable'        , "~> 0.0.1"
 gem 'rmagick'             , '~> 2.13.2'
 gem 'jquery-ui-rails'
 

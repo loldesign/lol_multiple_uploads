@@ -1,2 +1,2 @@
 picker_key: 'AW4LKXceQXaH71hWtVTdlz'
-orm: 'ActiveRecord' # or ActiveRecord
+orm: 'Mongoid' # or ActiveRecord

@@ -1,4 +1,4 @@
-<%= upload_link('Adicionar Imagem', object: @profile, images_container: '.images-container')%>
+<%= upload_link('Adicionar Imagem', object: @profile, images_container: '.images-container', multiple: false)%>
 
 <h2>Fotos</h2>
-<%= list_photos(@profile) %>
+<%= list_photos(@profile, is_sortable: false) %>

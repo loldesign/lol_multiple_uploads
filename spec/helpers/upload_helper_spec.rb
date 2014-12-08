@@ -6,7 +6,13 @@ describe UploadHelper do
 	context 'when object is persisted' do
 		let(:project){ Project.create}
 
-		subject{ helper.upload_link('Upload Imagem', object: project, image_container: '.images', photo_version: 'gallery_thumb') }
+		subject{ helper.upload_link(
+																'Upload Imagem', 
+																object: project, 
+																image_container: '.images', 
+																photo_version: 'gallery_thumb',
+																multiple: false
+															 )}
 		
 		it{ should =~ />Upload Imagem</ }
 		it{ should =~ /data-image-container=".images"/ }
@@ -14,6 +20,26 @@ describe UploadHelper do
 		it{ should =~ /data-model-id="#{project.id}"/ }
 		it{ should =~ /data-file-picker-key="#{PICKER_KEY}"/ }
 		it{ should =~ /data-photo-version="gallery_thumb"/ }
+
+		context 'when is multiple uploads' do
+			subject{ helper.upload_link(
+																	'Upload Imagem', 
+																	object: project, 
+																	multiple: true
+																 )}
+
+			it{ should =~ /data-multiple="true"/ }
+		end
+
+		context 'when is single uploads' do
+			subject{ helper.upload_link(
+																	'Upload Imagem', 
+																	object: project, 
+																	multiple: false
+																 )}
+
+			it{ should =~ /data-multiple="false"/ }
+		end
 	end
 
 	context 'when project is new_record' do
