@@ -31,8 +31,6 @@ elsif LOL_MULTIPLE_UPLOADS_ORM == 'ActiveRecord'
 
     belongs_to :photable, polymorphic: true
 
-    scope :prioritized, -> {order('priority ASC')}
-
     def has_caption?
       false
     end
