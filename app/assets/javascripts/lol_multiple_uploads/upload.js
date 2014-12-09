@@ -87,7 +87,7 @@ var MultipleUpload = function(link){
 			event.preventDefault();
 
       if(!that.multiple && $(that.imageContainer).children().length !== 0){
-        alert('Você deve remover a imagem existe primeiramente.');
+        alert('Você deve Remover a imagem existente primeiro.');
       }else{
   			that.filePicker();
       }
