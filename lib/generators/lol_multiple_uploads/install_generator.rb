@@ -12,3 +12,6 @@ module LolMultipleUploads
   	end
   end
 end
+
+# TODO
+# run rake railties:install:migrations
