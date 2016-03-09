@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lol_multiple_uploads (2.0.4)
+    lol_multiple_uploads (2.0.5)
       jquery-rails
       lol_sortable (~> 1.0.1)
       rails (> 3.2)
