@@ -154,7 +154,7 @@ var MultipleUpload = function(link){
 
 	this.showLoading = function(){
 		jQuery('<img/>', {
-			src:   '/assets/lol_multiple_uploads/loading.gif',
+			src:   '<%= asset_path("lol_multiple_uploads/loading.gif") %>',
 			style: 'position: fixed; bottom: 5px; right: 5px; z-index: 400;',
 			class: 'lol-multiple-uploads loading'
 		}).appendTo('body');
