@@ -3,7 +3,7 @@ module UploadHelper
 	  object            = options[:object]          || nil
     image_container   = options[:image_container] || '.images-container'
     photo_version     = options[:photo_version]   || :gallery_thumb
-    multiple          = options[:multiple].present?
+    multiple          = options[:multiple]        || true 
     
     link_to( name,
             'javascript://', 
