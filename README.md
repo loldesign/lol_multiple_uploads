@@ -8,7 +8,7 @@ You must create one account on [filepicker.io](https://www.filepicker.io.com/) a
 
 * Add to Gemfile
 
-`gem 'lol_multiple_uploads', '2.0.0'`
+`gem 'lol_multiple_uploads', '2.0.5'`
 
 * Run the Generator
 
@@ -27,7 +27,7 @@ You must create one account on [filepicker.io](https://www.filepicker.io.com/) a
 * in your form or view add:
 
 ```
-<%= upload_link('Link Text', object: object, image_container: '.images_container', photo_version: 'gallery_thumb')%>
+<%= upload_link('Link Text', object: object, image_container: '.images-container', photo_version: 'gallery_thumb')%>
 
 <%= list_photos(object) %> or <%= list_photos(object, :photo_version) %>
 #default version is :gallery_thumb
